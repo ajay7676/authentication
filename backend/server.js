@@ -5,6 +5,9 @@ dotenv.config({path: "config/config.env"});
 import {connectMongoDatabase} from './config/db.js'
 
  const port = process.env.PORT || 5000;
+ app.post("/register" , (req,res) => {
+     
+ })
 app.listen( port, () =>{
           connectMongoDatabase();
 
