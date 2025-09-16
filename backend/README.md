@@ -18,4 +18,4 @@
 13=> Register User in Database 
 14=> Genrate VerificationToken for 2 hours for verication
 15 => find out the user is already exist or not 
-16 => 
+16 => hash the password usng bcrypt.js npm

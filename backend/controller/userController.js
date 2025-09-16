@@ -1,4 +1,5 @@
 import User from "../model/User.js";
+import bcrypt from "bcryptjs";
 
 export const  register = async(req, res) => {
    const {firstName,lastName, email , password} =  req.body;
@@ -14,6 +15,10 @@ export const  register = async(req, res) => {
     if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
     }
+    // hash password
+    const hashedPassword = await bcrypt.hash(password, 10); 
+    // 10 = salt rounds (security level)
+
       // Genrate the verifaction code after register user (6digit)
       const verificationToken = Math.floor(100000 + Math.random() * 900000).toString();
 
@@ -21,7 +26,7 @@ export const  register = async(req, res) => {
         firstName,
         lastName,
         email ,
-        password,
+        password: hashedPassword,
         verificationToken,
         verificationTokenExpiresAt: Date.now() + 2*60*60*1000
 
