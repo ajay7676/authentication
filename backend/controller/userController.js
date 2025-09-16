@@ -1,5 +1,6 @@
 import User from "../model/User.js";
 import bcrypt from "bcryptjs";
+import { genrateTokenCookie } from "../utils/genrateTokenCookie.js";
 
 export const  register = async(req, res) => {
    const {firstName,lastName, email , password} =  req.body;
@@ -31,10 +32,15 @@ export const  register = async(req, res) => {
         verificationTokenExpiresAt: Date.now() + 2*60*60*1000
 
       });
+      const token = genrateTokenCookie(user._id);
+       console.log(token)
       res.status(200).json({
         success: true,
         message: "User registered successfully",
-        data: user
+        data: {
+            ...user._doc,
+            password: undefined
+        }
       })
    } catch (error) {
      console.log(error)

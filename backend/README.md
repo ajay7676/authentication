@@ -18,4 +18,9 @@
 13=> Register User in Database 
 14=> Genrate VerificationToken for 2 hours for verication
 15 => find out the user is already exist or not 
-16 => hash the password usng bcrypt.js npm
+16 => install npm i bcrypt.js 
+17 => hash the password usng bcrypt.js npm
+18 => npm install jsonwebtoken
+19 => genrate jwt token usng npm
+
+
